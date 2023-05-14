@@ -14,11 +14,15 @@ function Footer() {
   const isMobileView = useMediaQuery((theme) =>
     theme.breakpoints.down('mobile')
   )
+  const isTabletView = useMediaQuery((theme) =>
+    theme.breakpoints.down('tablet')
+  )
   return (
     <Container
       maxWidth='xs'
       sx={{
         bgcolor: '#000',
+        pb: isTabletView ? '56px' : 0,
       }}
       component={'footer'}
     >

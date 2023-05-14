@@ -56,10 +56,7 @@ function TableRanks() {
         </TableHead>
         <TableBody>
           {tableData.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+            <TableRow key={row.id}>
               <TableCell
                 sx={{
                   color: 'text.secondary',

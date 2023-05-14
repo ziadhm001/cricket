@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import TableRanks from './TableRanks'
+import CardLastUpdate from '../CardLastUpdate'
 
 function InternationalRanking() {
   const [ranking, setRanking] = useState(null)
@@ -101,6 +102,7 @@ function InternationalRanking() {
         <TabPanel value='bowling'></TabPanel>
         <TabPanel value='alr'></TabPanel>
       </TabContext>
+      <CardLastUpdate />
     </Stack>
   )
 }

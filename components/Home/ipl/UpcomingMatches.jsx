@@ -2,24 +2,23 @@ import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { NavLink } from '@/utils/CustomComponents'
-import TopBowlerTable from './TopBowlerTable'
-import CardLastUpdate from '../CardLastUpdate'
-import useMediaQuery from '@mui/material/useMediaQuery'
+import UpcomingMatchCard from './UpcomingMatchCard'
+import { useMediaQuery } from '@mui/material'
 
-function TopBowler() {
+function UpcomingMatches() {
   const isMobileView = useMediaQuery((theme) =>
     theme.breakpoints.down('mobile')
   )
+  const isDesktopView = useMediaQuery((theme) => theme.breakpoints.up('tablet'))
   return (
     <Stack
-      bgcolor={'Background'}
       borderRadius={'12px'}
       minHeight={'fit-content'}
       overflow={'hidden'}
       boxSizing={'unset'}
       width={isMobileView ? '100%' : '309px'}
-      gridRow={isMobileView ? 'unset' : 'span 2'}
       pb={2}
+      gridColumn={isMobileView || isDesktopView ? 'unset' : 'span 2'}
     >
       <Box
         p={2}
@@ -29,14 +28,26 @@ function TopBowler() {
         mb={2}
       >
         <Typography component='h3' fontWeight={500} fontSize='20px'>
-          Top Bowler
+          Upcoming Match
         </Typography>
         <NavLink>See All</NavLink>
       </Box>
-      <TopBowlerTable />
-      <CardLastUpdate />
+      <Stack
+        direction={isMobileView ? 'row' : 'column'}
+        gap={2}
+        overflow={'scroll'}
+        sx={{
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        }}
+      >
+        <UpcomingMatchCard />
+        <UpcomingMatchCard />
+        <UpcomingMatchCard />
+      </Stack>
     </Stack>
   )
 }
 
-export default TopBowler
+export default UpcomingMatches

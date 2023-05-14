@@ -7,13 +7,18 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Typography,
+  useMediaQuery,
 } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import RankingTable from './RankingTable'
 import { useState } from 'react'
+import CardLastUpdate from '../CardLastUpdate'
 function Ranking() {
   const [ranking, setRanking] = useState('')
   const [rankTab, setRankTab] = useState('teams')
+  const isMobileView = useMediaQuery((theme) =>
+    theme.breakpoints.down('mobile')
+  )
   return (
     <Stack
       fontSize={'14px'}
@@ -22,6 +27,7 @@ function Ranking() {
       minHeight={'fit-content'}
       overflow={'hidden'}
       boxSizing={'unset'}
+      width={isMobileView ? '100%' : '309px'}
       pb={2}
     >
       <Box
@@ -95,6 +101,7 @@ function Ranking() {
         <TabPanel value='bowling'></TabPanel>
         <TabPanel value='alr'></TabPanel>
       </TabContext>
+      <CardLastUpdate />
     </Stack>
   )
 }

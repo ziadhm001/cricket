@@ -14,7 +14,7 @@ function NewsArticle({ children, sx }) {
       overflow={'hidden'}
       boxSizing={'unset'}
       p={2}
-      width={'618px'}
+      width={isMobileView ? 'unset' : '618px'}
       gap={3}
       order={isMobileView ? -1 : 0}
     >
